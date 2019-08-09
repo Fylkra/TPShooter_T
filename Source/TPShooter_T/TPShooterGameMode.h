@@ -15,7 +15,9 @@ class TPSHOOTER_T_API ATPShooterGameMode : public AGameMode
 	GENERATED_BODY()
 	
 public:
+	ATPShooterGameMode(const FObjectInitializer& ObjectInitializer);
+
 	virtual void StartPlay() override;
 
-	ATPShooterGameMode(const FObjectInitializer& ObjectInitializer);
+	
 };
