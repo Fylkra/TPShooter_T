@@ -9,11 +9,26 @@
 #include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
-ATPSCharacter::ATPSCharacter()
+ATPSCharacter::ATPSCharacter(const FObjectInitializer& ObjectInitializer)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	
+	// Camera Boom
+	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 
+	CameraBoom->SetupAttachment(RootComponent);
+
+	// Camera
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+
+	Camera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+
+	//Take Control of lowest Player
+	AutoPossessPlayer = EAutoReceiveInput::Player0;
+
+
+	
 }
 
 // Called when the game starts or when spawned

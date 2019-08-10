@@ -11,7 +11,7 @@ ATPShooterGameMode::ATPShooterGameMode(const FObjectInitializer& ObjectInitializ
 	: Super(ObjectInitializer)
 {
 	// Set Default Pawn to BP_TPSCharacter
-	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnObject(TEXT("Pawn'/Game/BP_TPSCharacter'"));
+	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnObject(TEXT("Pawn'/Game/BP_TPSCharacter3'"));
 
 	if (PlayerPawnObject.Class != NULL)
 	{

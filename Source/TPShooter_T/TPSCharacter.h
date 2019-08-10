@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
 #include "TPSCharacter.generated.h"
 
 UCLASS()
@@ -13,7 +15,15 @@ class TPSHOOTER_T_API ATPSCharacter : public ACharacter
 
 public:
 	// Sets default values for this character's properties
-	ATPSCharacter();
+	ATPSCharacter(const FObjectInitializer& ObjectInitializer);
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Camera")
+		USpringArmComponent* CameraBoom;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Camera")
+		UCameraComponent* Camera;
+		
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -27,18 +37,20 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	// Forward and Backwards Movement
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "MovementControls")
 		void MoveForward(float AxisValue);
 
 	// Left and Right Movement
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "MovementControls")
 		void MoveRight(float AxisValue);
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "MovementControls")
 		void OnStartJump();
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "MovementControls")
 		void OnStopJump();
+
+
 
 
 
